@@ -12,7 +12,6 @@ require (
 	github.com/getamis/sirius v1.1.6 // indirect
 	github.com/gin-gonic/gin v1.4.0
 	github.com/go-redis/redis v6.15.6+incompatible
-	github.com/go-xorm/core v0.6.2
 	github.com/go-xorm/xorm v0.7.1
 	github.com/gorilla/mux v1.7.3
 	github.com/guregu/null v3.4.0+incompatible // indirect
