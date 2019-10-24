@@ -2,8 +2,9 @@ package utils
 
 import (
 	"fmt"
-	"giac/utils/im"
 	"testing"
+
+	"github.com/IcanFun/utils/utils/im"
 )
 
 func Test_IM(t *testing.T) {

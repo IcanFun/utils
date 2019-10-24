@@ -1,7 +1,7 @@
 package i18n
 
 import (
-	"redis-trade-query-server/utils"
+	"github.com/IcanFun/utils/utils"
 
 	"github.com/IcanFun/go-i18n-struct/i18nfile"
 )
@@ -176,7 +176,7 @@ func init() {
 	})
 
 	i18ns.AddI18n(utils.I18n{
-		Id:    "utils.i18n.loaded",
+		Id:    "github.com/IcanFun/utils.i18n.loaded",
 		Zh_CN: "从 '%v' 加载 '%v' 系统翻译信息",
 		En_US: "Loading '%v' system translate information  from '%v' ",
 		Zh_HK: "從 '%v' 加載 '%v' 系統翻譯資訊",

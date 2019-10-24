@@ -2,16 +2,17 @@ package utils
 
 import (
 	"fmt"
-	_const "giac/const"
 	"io/ioutil"
 	"net/http"
 	"path/filepath"
 	"strings"
 
+	_const "github.com/IcanFun/utils/const"
+
 	"github.com/IcanFun/go-i18n-struct/i18nfile"
 	"github.com/spf13/viper"
 
-	"giac/utils/log"
+	"github.com/IcanFun/utils/utils/log"
 
 	"github.com/nicksnyder/go-i18n/i18n"
 )
@@ -83,7 +84,7 @@ func GetTranslationsBySystemLocale() (i18n.TranslateFunc, error) {
 		return nil, fmt.Errorf("Failed to load system translations")
 	}
 
-	log.Info(translations("utils.i18n.loaded"), locales[locale], locale)
+	log.Info(translations("github.com/IcanFun/utils.i18n.loaded"), locales[locale], locale)
 	return translations, nil
 }
 

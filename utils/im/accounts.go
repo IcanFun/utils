@@ -4,7 +4,6 @@ import (
 	"crypto/sha1"
 	"encoding/hex"
 	"fmt"
-	"giac/utils/log"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
@@ -12,6 +11,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/IcanFun/utils/utils/log"
 
 	"github.com/spf13/viper"
 )

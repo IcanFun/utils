@@ -6,10 +6,11 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	"giac/utils/log"
 	"io"
 	"math"
 	"math/big"
+	"net"
+	"net/http"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -17,6 +18,9 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	_const "github.com/IcanFun/utils/const"
+	"github.com/IcanFun/utils/utils/log"
 
 	"github.com/bitly/go-simplejson"
 	"github.com/go-redis/redis"
@@ -431,4 +435,18 @@ func GetSomeTimeAgoMills(num, unit int) int64 {
 	}
 
 	return 0
+}
+
+func GetIpAddress(r *http.Request) string {
+	address := r.Header.Get(_const.HEADER_FORWARDED)
+
+	if len(address) == 0 {
+		address = r.Header.Get(_const.HEADER_REAL_IP)
+	}
+
+	if len(address) == 0 {
+		address, _, _ = net.SplitHostPort(r.RemoteAddr)
+	}
+
+	return address
 }

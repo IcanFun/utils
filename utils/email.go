@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"giac/utils/log"
+	"github.com/IcanFun/utils/utils/log"
 )
 
 const (
@@ -67,7 +67,7 @@ func connectToSMTPServer(settings EmailSettings) (net.Conn, error) {
 func newSMTPClient(conn net.Conn, settings EmailSettings) (*smtp.Client, error) {
 	c, err := smtp.NewClient(conn, settings.SMTPServer+":"+settings.SMTPPort)
 	if err != nil {
-		log.Error(T("utils.mail.new_client.open.error"), err)
+		log.Error(T("github.com/IcanFun/utils.mail.new_client.open.error"), err)
 		return nil, err
 	}
 
@@ -99,7 +99,7 @@ func SendMailUsingConfig(fromeName, to, subject, body string, settings EmailSett
 		return nil
 	}
 
-	log.Debug(T("utils.mail.send_mail.sending.debug"), to, subject)
+	log.Debug(T("github.com/IcanFun/utils.mail.send_mail.sending.debug"), to, subject)
 
 	fromMail := mail.Address{Name: fromeName, Address: settings.FeedbackEmail}
 	toMail := mail.Address{Name: "", Address: to}
