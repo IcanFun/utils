@@ -450,3 +450,8 @@ func GetIpAddress(r *http.Request) string {
 
 	return address
 }
+
+func MapToStruct(m map[string]string, data interface{})  {
+	j,_:=json.Marshal(m)
+	json.Unmarshal(j,data)
+}
