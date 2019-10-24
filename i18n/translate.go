@@ -6,9 +6,9 @@ import (
 	"github.com/IcanFun/go-i18n-struct/i18nfile"
 )
 
-func init() {
-	i18ns := new(utils.I18ns)
+var i18ns = new(utils.I18ns)
 
+func init() {
 	i18ns.AddI18n(utils.I18n{
 		Id:    "api.api.init.parsing_templates.debug",
 		Zh_CN: "解析服务模板 %v",
@@ -1500,7 +1500,13 @@ func init() {
 		Th_TH: "ไม่มีคู่ของธุรกรรมนี้",
 		Ko_KR: "이 교역이 없다",
 	})
+}
 
+func AddI18n(data utils.I18n) {
+	i18ns.AddI18n(data)
+}
+
+func WriteI18nFile() {
 	if err := i18nfile.WriteToFile(i18ns.Items, utils.GetAppPath()+"/i18n"); err != nil {
 		panic(err.Error())
 	}
