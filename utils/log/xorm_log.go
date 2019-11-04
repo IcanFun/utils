@@ -38,15 +38,20 @@ func (x *XormLogger) Infof(format string, v ...interface{}) {
 		if len(v) == 2 {
 			args[0] = v[1]
 		} else {
-			args = v[1].([]interface{})
-			for key, value := range args {
-				if s, ok := value.(string); ok {
-					args[key] = "\"" + s + "\""
-				} else if s, ok := value.(time.Weekday); ok {
-					args[key] = int(s)
+			switch arg := v[1].(type) {
+			case []interface{}:
+				for _, value := range arg {
+					switch s := value.(type) {
+					case string:
+						args = append(args, "\""+s+"\"")
+					case time.Weekday:
+						args = append(args, int(s))
+					default:
+						args = append(args, s)
+					}
 				}
+				args = append(args, v[2])
 			}
-			args = append(args, v[2])
 		}
 
 		x.INFO.Output(2, fmt.Sprintf("[SQL] "+sql+" - took: %v", args...))

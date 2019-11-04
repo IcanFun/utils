@@ -147,6 +147,14 @@ func NewDecimalFromString(s string) (decimal.Decimal, error) {
 	return decimal.NewFromString(s)
 }
 
+func MustNewDecimalFromString(s string) decimal.Decimal {
+	if s == "" {
+		return decimal.New(0, 0)
+	}
+	d, _ := decimal.NewFromString(s)
+	return d
+}
+
 func CurrentTimestamp() int64 {
 	return int64(time.Nanosecond) * time.Now().UnixNano() / int64(time.Millisecond)
 }
@@ -451,7 +459,7 @@ func GetIpAddress(r *http.Request) string {
 	return address
 }
 
-func MapToStruct(m map[string]string, data interface{})  {
-	j,_:=json.Marshal(m)
-	json.Unmarshal(j,data)
+func MapToStruct(m map[string]string, data interface{}) {
+	j, _ := json.Marshal(m)
+	json.Unmarshal(j, data)
 }
