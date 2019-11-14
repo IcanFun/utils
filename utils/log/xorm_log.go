@@ -34,9 +34,9 @@ func (x *XormLogger) Infof(format string, v ...interface{}) {
 			return
 		}
 		sql = strings.ReplaceAll(sql, "?", "%+v")
-		args := make([]interface{}, 1, 2)
+		args := make([]interface{}, 0)
 		if len(v) == 2 {
-			args[0] = v[1]
+			args = append(args, v[1])
 		} else {
 			switch arg := v[1].(type) {
 			case []interface{}:
