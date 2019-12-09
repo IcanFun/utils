@@ -421,8 +421,9 @@ func IsLeapYear(year int) bool {
 
 //unit 1-年 2-月 3-日
 func GetSomeTimeAgoMills(num, unit int) int64 {
-	timeStr := time.Now().Format("2006-01-02")
-	t, _ := time.ParseInLocation("2006-01-02", timeStr, time.Local)
+	layout := "2006-01-02 15:04:05"
+	timeStr := time.Now().Format(layout)
+	t, _ := time.ParseInLocation(layout, timeStr, time.Local)
 	year := t.Year()
 	switch unit {
 	case 1: //年
