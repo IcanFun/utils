@@ -12,8 +12,6 @@ require (
 	github.com/getamis/sirius v1.1.6 // indirect
 	github.com/gin-gonic/gin v1.4.0
 	github.com/go-redis/redis v6.15.6+incompatible
-	github.com/go-xorm/core v0.6.2
-	github.com/go-xorm/xorm v0.7.1
 	github.com/gorilla/mux v1.7.3
 	github.com/guregu/null v3.4.0+incompatible // indirect
 	github.com/hnlq715/golang-lru v0.2.0 // indirect
@@ -29,9 +27,11 @@ require (
 	github.com/rollbar/rollbar-go v1.2.0 // indirect
 	github.com/shopspring/decimal v0.0.0-20180709203117-cd690d0c9e24
 	github.com/spf13/viper v1.4.0
-	github.com/stretchr/testify v1.3.0
+	github.com/stretchr/testify v1.4.0
 	github.com/swaggo/swag v1.6.3
 	github.com/valyala/fasthttp v1.5.0
 	go.uber.org/zap v1.10.0
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
+	xorm.io/core v0.7.2
+	xorm.io/xorm v0.8.0
 )

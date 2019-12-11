@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/go-xorm/core"
+	"xorm.io/core"
 
-	"github.com/go-xorm/xorm"
+	"xorm.io/xorm"
 )
 
 type XormLogger struct {
