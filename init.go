@@ -17,7 +17,9 @@ func InitUtils(s *log.LogSettings, jwtSecret string, api middleware.CheckApiKeyF
 		panic(err)
 		return
 	}
-	log.ConfigZapLog(s)
+	if s != nil {
+		log.ConfigZapLog(s)
+	}
 	middleware.JWTSecret = jwtSecret
 	middleware.CheckApiKey = api
 }

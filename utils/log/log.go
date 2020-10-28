@@ -32,6 +32,10 @@ var (
 	//Debugf, Warnf, Infof, Errorf, DPainc, Panicf, Fatalf func(template string, args ...interface{})
 )
 
+func init() {
+	ConfigZapLog(&LogSettings{EnableConsole: true})
+}
+
 func ConfigZapLog(s *LogSettings) {
 	var allCore []zapcore.Core
 
