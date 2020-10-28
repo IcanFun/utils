@@ -11,8 +11,6 @@ import (
 	"time"
 
 	_const "github.com/IcanFun/utils/const"
-	"github.com/spf13/viper"
-
 	"github.com/IcanFun/utils/utils/log"
 
 	"github.com/gin-gonic/gin"
@@ -401,7 +399,7 @@ func InitContext(ctx *gin.Context) *Context {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
 			}
-			return []byte(viper.GetString("JWTSettings.Secret")), nil
+			return []byte(JWTSecret), nil
 		})
 
 		if err != nil {
