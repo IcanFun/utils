@@ -56,6 +56,7 @@ type AppError struct {
 	RequestId     string `json:"request_id,omitempty"`  // The RequestId that's also set in the header
 	StatusCode    int    `json:"status_code,omitempty"` // The http status code
 	Where         string `json:"-"`                     // The function where it happened in the form of Struct.Func
+	Code          int    `json:"code"`
 	params        map[string]interface{}
 }
 
@@ -366,6 +367,7 @@ func RenderError(c *gin.Context, err interface{}) {
 		err = NewAppError("", e.Error(), nil, e.Error(), http.StatusBadRequest)
 		err.(*AppError).Translate(t)
 	}
+	err.(*AppError).Code = err.(*AppError).StatusCode //兼容code
 	c.JSON(200, err)
 }
 
