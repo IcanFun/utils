@@ -25,4 +25,6 @@ const (
 	STATUS                 = "status"
 	STATUS_OK              = "OK"
 	LAST_PICTURE_UPDATE    = "Last_picture_update"
+
+	PWD_KEY = "spotvxe2ccdkcvwv"
 )
