@@ -18,8 +18,6 @@ import (
 
 	_const "github.com/IcanFun/utils/const"
 
-	"github.com/gin-gonic/gin"
-
 	goi18n "github.com/nicksnyder/go-i18n/i18n"
 	"github.com/pborman/uuid"
 )
@@ -356,24 +354,4 @@ func GetProtocol(r *http.Request) string {
 	} else {
 		return "http"
 	}
-}
-
-func RenderError(c *gin.Context, err interface{}) {
-	t, _ := GetTranslationsAndLocale(c.Request)
-	switch e := err.(type) {
-	case *AppError:
-		err.(*AppError).Translate(t)
-	case error:
-		err = NewAppError("", e.Error(), nil, e.Error(), http.StatusBadRequest)
-		err.(*AppError).Translate(t)
-	}
-	err.(*AppError).Code = err.(*AppError).StatusCode //兼容code
-	c.JSON(200, err)
-}
-
-func RenderOK(c *gin.Context, o interface{}) {
-	if o == nil {
-		o = AppOK{Status: "ok"}
-	}
-	c.JSON(200, o)
 }

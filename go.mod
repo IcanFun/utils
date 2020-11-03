@@ -23,9 +23,10 @@ require (
 	github.com/spf13/viper v1.4.0
 	github.com/stretchr/testify v1.4.0
 	github.com/swaggo/swag v1.6.3
+	github.com/unknwon/com v1.0.1
 	github.com/valyala/fasthttp v1.5.0
 	go.uber.org/zap v1.10.0
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	xorm.io/core v0.7.2
-    xorm.io/xorm v0.8.0
+	xorm.io/xorm v0.8.0
 )

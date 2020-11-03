@@ -14,6 +14,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"runtime"
 	"sort"
 	"strconv"
 	"strings"
@@ -463,4 +464,54 @@ func GetIpAddress(r *http.Request) string {
 func MapToStruct(m map[string]string, data interface{}) {
 	j, _ := json.Marshal(m)
 	json.Unmarshal(j, data)
+}
+
+func Stack() string {
+	const size = 64 << 10
+	buf := make([]byte, size)
+	buf = buf[:runtime.Stack(buf, false)]
+
+	return string(buf)
+}
+
+func AtoI64(a string) int64 {
+	i, _ := strconv.ParseInt(a, 10, 64)
+	return i
+}
+
+func I64toA(i int64) string {
+	return strconv.FormatInt(i, 10)
+}
+
+func Time2String(timestamp int64) string {
+	return time.Unix(timestamp/1000, 0).Format("2006-01-02 03:04:05")
+}
+
+func Str2Time(formatTimeStr string) int64 {
+	timeLayout := "2006-01-02 15:04:05"
+	loc, _ := time.LoadLocation("Local")
+	theTime, _ := time.ParseInLocation(timeLayout, formatTimeStr, loc) //使用模板在对应时区转化为time.time类型
+
+	return theTime.UnixNano() / int64(time.Millisecond)
+}
+
+func DecimalFloat64(dec decimal.Decimal) float64 {
+	f, _ := dec.Float64()
+	return f
+}
+
+//上个月一号
+func GetLast1hao() int64 {
+	t := time.Now()
+	t = t.AddDate(0, -1, -t.Day()+1)
+	t = time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
+	return t.UnixNano() / int64(time.Millisecond)
+}
+
+//这个月1号
+func GetThis1hao() int64 {
+	t := time.Now()
+	t = t.AddDate(0, 0, -t.Day()+1)
+	t = time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
+	return t.UnixNano() / int64(time.Millisecond)
 }
