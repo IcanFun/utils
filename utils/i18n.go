@@ -160,6 +160,6 @@ type I18ns struct {
 	Items []i18nfile.I18n
 }
 
-func (is *I18ns) AddI18n(n I18n) {
+func (is *I18ns) AddI18n(n i18nfile.I18n) {
 	is.Items = append(is.Items, n)
 }
