@@ -46,7 +46,6 @@ func TestAdmin(t *testing.T) {
 	})
 
 	g := gin.Default()
-
 	admin := InitAdmin(db, g.Group("/admin"))
 	option := admin.Table(&UserEmail{}, "ID", "/users").
 		SetSelect(&CurdCon{
